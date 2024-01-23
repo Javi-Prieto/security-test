@@ -23,14 +23,13 @@ public class NoteService {
         List<NotesGroupedByTagsDto> result = null;
 
 
-        if (notes.size() > 0) {
+        if (!notes.isEmpty()) {
             List<String> differentsTags =
                     notes.stream()
                             .map(Note::getTags)
                             .flatMap(List::stream)
                             .distinct()
-                            .collect(Collectors.toList());
-
+                            .toList();
 
             result = new ArrayList<>();
 
